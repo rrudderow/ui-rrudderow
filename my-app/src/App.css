@@ -6,11 +6,13 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background: #feb47b; /* Coral background */
+  background-image: url('new-york-image.jpg'); /* Use your image URL here */
+  background-size: cover; /* Makes sure the image covers the whole background */
+  background-position: center; /* Centers the image */
   color: #333;
   font-family: Arial, sans-serif;
   padding: 20px; /* Add padding to prevent text from touching the edges */
-  box-sizing: border-box;
+
   margin-top: 90px; /* This space prevents overlap from fixed banner */
 }
 
@@ -67,13 +69,12 @@
   gap: 20px;
   padding: 20px;
   width: 80%;
-  margin-top: 120px; /* Added margin-top to create space from the fixed banner */
+  margin-top: 80px; /* Added margin-top to create space from the fixed banner */
 }
 
 /* Info Boxes (Weather details) */
 .info-box {
   background-color: #a8d5ba; /* Softer, lighter succulent green for weather boxes */
-  color: #fff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -88,5 +89,4 @@
 
 .info-text {
   font-size: 16px;
-  color: #fff; /* White text for contrast */
 }
