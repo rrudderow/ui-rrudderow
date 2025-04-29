@@ -14,9 +14,9 @@ export default function HomeScreen() {
 
   const weather = {
     city: 'Colorado Springs, CO',
-    temp: 12,
-    high: 15,
-    low: 4,
+    temp: 76,
+    high: 77,
+    low: 63,
     description: 'Partly cloudy',
   };
 
@@ -42,9 +42,9 @@ export default function HomeScreen() {
 
         <View style={styles.mainContent}>
           <Text style={styles.description}>{weather.description}</Text>
-          <Text style={styles.temp}>{weather.temp}°C</Text>
+          <Text style={styles.temp}>{weather.temp}°F</Text>
           <Text style={styles.highLow}>
-            High: {weather.high}°C | Low: {weather.low}°C
+            High: {weather.high}°F | Low: {weather.low}°F
           </Text>
         </View>
 
