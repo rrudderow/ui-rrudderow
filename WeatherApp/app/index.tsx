@@ -1,72 +1,131 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, ActivityIndicator } from 'react-native';
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Pressable,
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 
-const API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY';
+export default function HomeScreen() {
+  const router = useRouter();
 
-export default function WeatherScreen() {
-  const [city, setCity] = useState('');
-  const [weather, setWeather] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
-
-  const getWeather = async () => {
-    if (!city) return;
-    setLoading(true);
-    try {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-      );
-      const data = await res.json();
-      if (data.cod === 200) {
-        setWeather({
-          temp: data.main.temp,
-          description: data.weather[0].description,
-          city: data.name,
-        });
-      } else {
-        setWeather(null);
-        alert('City not found');
-      }
-    } catch (e) {
-      alert('Failed to fetch weather data.');
-    } finally {
-      setLoading(false);
-    }
+  const weather = {
+    city: 'Colorado Springs, CO',
+    temp: 12,
+    high: 15,
+    low: 4,
+    description: 'Partly cloudy',
   };
 
+  const cards = [
+    { label: 'UV Index', value: '5', route: '/uv' },
+    { label: 'Humidity', value: '60%', route: '/humidity' },
+    { label: 'Air Quality', value: 'Good', route: '/air-quality' },
+    { label: 'Rain Chance', value: '30%', route: '/rain' },
+    { label: 'Wind', value: '15 km/h NW', route: '/wind' },
+    { label: 'Sunset', value: '7:42 PM', route: '/sunset' },
+    { label: 'Moon Phase', value: 'Waxing Gibbous', route: '/moon' },
+  ];
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Simple Weather App</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter city"
-        value={city}
-        onChangeText={setCity}
-      />
-      <Button title="Get Weather" onPress={getWeather} />
-      {loading && <ActivityIndicator size="large" style={{ marginTop: 20 }} />}
-      {weather && (
-        <View style={styles.result}>
+    <LinearGradient
+      colors={['#2e8b57', '#006400']}
+      style={styles.background}
+    >
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.header}>
           <Text style={styles.city}>{weather.city}</Text>
-          <Text style={styles.temp}>{weather.temp}°C</Text>
-          <Text style={styles.desc}>{weather.description}</Text>
         </View>
-      )}
-    </View>
+
+        <View style={styles.mainContent}>
+          <Text style={styles.description}>{weather.description}</Text>
+          <Text style={styles.temp}>{weather.temp}°C</Text>
+          <Text style={styles.highLow}>
+            High: {weather.high}°C | Low: {weather.low}°C
+          </Text>
+        </View>
+
+        <View style={styles.cardContainer}>
+          {cards.map((card, index) => (
+            <Pressable
+              key={index}
+              style={styles.card}
+              onPress={() => router.push(card.route)}
+            >
+              <Text style={styles.cardTitle}>{card.label}</Text>
+              <Text style={styles.cardValue}>{card.value}</Text>
+            </Pressable>
+          ))}
+        </View>
+      </ScrollView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, justifyContent: 'center' },
-  title: { fontSize: 24, textAlign: 'center', marginBottom: 20 },
-  input: {
-    borderWidth: 1,
-    padding: 10,
-    marginBottom: 10,
-    fontSize: 18,
-    borderRadius: 5,
+  background: {
+    flex: 1,
   },
-  result: { marginTop: 20, alignItems: 'center' },
-  city: { fontSize: 24, fontWeight: 'bold' },
-  temp: { fontSize: 40, marginVertical: 10 },
-  desc: { fontSize: 18, fontStyle: 'italic' },
+  scrollContainer: {
+    flexGrow: 1,
+    paddingBottom: 40,
+  },
+  header: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    padding: 20,
+    alignItems: 'center',
+  },
+  city: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  mainContent: {
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  temp: {
+    fontSize: 80,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  description: {
+    fontSize: 18,
+    color: '#fff',
+    marginBottom: 5,
+  },
+  highLow: {
+    fontSize: 16,
+    color: '#fff',
+  },
+  cardContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    marginTop: 30,
+    paddingHorizontal: 10,
+  },
+  card: {
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    width: '40%',
+    marginVertical: 10,
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  cardTitle: {
+    color: '#fff',
+    fontSize: 16,
+    marginBottom: 5,
+    textAlign: 'center',
+  },
+  cardValue: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 });
