@@ -21,6 +21,7 @@ export default function HomeScreen() {
   };
 
   const cards = [
+    { label: 'Temperature', value: '76°F', route: '/temp' },
     { label: 'UV Index', value: '5', route: '/uv' },
     { label: 'Humidity', value: '60%', route: '/humidity' },
     { label: 'Air Quality', value: 'Good', route: '/air-quality' },

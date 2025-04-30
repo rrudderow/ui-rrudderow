@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import styles from './sharedStyles';
 
 const uvData = [
   { time: '3:00 PM', value: 5 },
@@ -21,7 +22,7 @@ export default function UVScreen() {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>☀️ Current UV Index</Text>
-      <Text style={styles.uvValue}>5 (Moderate)</Text>
+      <Text style={styles.value}>5 (Moderate)</Text>
       <Text style={styles.recommendation}>
         Wear sunscreen and limit sun exposure from 11am to 3pm.
       </Text>
@@ -38,62 +39,3 @@ export default function UVScreen() {
       </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e0f2e9', // light green background
-    padding: 20,
-    paddingTop: 60,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#2e7d32', // dark green
-    marginBottom: 10,
-  },
-  uvValue: {
-    fontSize: 48,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#388e3c',
-    marginBottom: 20,
-  },
-  recommendation: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 30,
-    color: '#1b5e20',
-  },
-  chartTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#2e7d32',
-  },
-  chartContainer: {
-    flexGrow: 1,
-  },
-  chartRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  chartTime: {
-    width: 80,
-    fontSize: 16,
-    color: '#1b5e20',
-  },
-  chartBar: {
-    height: 24,
-    backgroundColor: '#81c784', // medium green
-    justifyContent: 'center',
-    paddingHorizontal: 8,
-    borderRadius: 6,
-  },
-  chartBarText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-});
