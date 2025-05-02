@@ -16,7 +16,7 @@ export default function HomeScreen() {
     city: 'Colorado Springs, CO',
     temp: 76,
     high: 77,
-    low: 63,
+    low: 45,
     description: 'Partly cloudy',
   };
 
@@ -24,11 +24,11 @@ export default function HomeScreen() {
     { label: 'Temperature', value: '76°F', route: '/temp' },
     { label: 'UV Index', value: '5', route: '/uv' },
     { label: 'Humidity', value: '60%', route: '/humidity' },
-    { label: 'Air Quality', value: 'Good', route: '/air-quality' },
+    { label: 'Air Quality', value: 'Moderate', route: '/air-quality' },
     { label: 'Rain Chance', value: '30%', route: '/rain' },
     { label: 'Wind', value: '15 km/h NW', route: '/wind' },
     { label: 'Sunset', value: '7:42 PM', route: '/sunset' },
-    { label: 'Moon Phase', value: 'Waxing Gibbous', route: '/moon' },
+    { label: 'Moon Phase', value: 'Waning Gibbous', route: '/moon' },
   ];
 
   return (
@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: 'rgba(0,0,0,0.5)',
-    padding: 20,
+    paddingTop: 40,       // More space at the top
+    paddingBottom: 20,    // Less space at the bottom
     alignItems: 'center',
   },
   city: {

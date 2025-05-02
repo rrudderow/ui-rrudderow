@@ -31,7 +31,7 @@ export default function HumidityScreen() {
         <View key={index} style={styles.chartRow}>
           <Text style={styles.chartTime}>{item.time}</Text>
           <View style={[styles.chartBar, { width: `${item.value / 2}%` }]}>
-            <Text style={styles.chartBarText}>{item.value}%</Text>
+            <Text style={styles.chartBarText}>{item.value}°F</Text>
           </View>
         </View>
       ))}
