@@ -138,6 +138,52 @@ const sharedStyles = StyleSheet.create({
     width: '45%',
   },
 
+    // Air Quality Styles
+    aqiBar: {
+        height: 20,
+        flexDirection: 'row',
+        borderRadius: 10,
+        overflow: 'hidden',
+        marginVertical: 20,
+        position: 'relative',
+      },
+      aqiSegment: {
+        flex: 1,
+      },
+      aqiMarker: {
+        position: 'absolute',
+        top: -6,
+        width: 12,
+        height: 32,
+        borderRadius: 6,
+        backgroundColor: '#000',
+        borderWidth: 2,
+        borderColor: '#fff',
+      },    
+
+      // Air Quality Gradient Bar
+      aqiBarWrapper: {
+        height: 20,
+        marginVertical: 20,
+        borderRadius: 10,
+        overflow: 'hidden',
+        position: 'relative',
+      },
+      aqiGradient: {
+        height: 20,
+        width: '100%',
+        borderRadius: 10,
+      },
+      aqiMarker: {
+        position: 'absolute',
+        top: -6,
+        width: 12,
+        height: 32,
+        borderRadius: 6,
+        backgroundColor: '#000',
+        borderWidth: 2,
+        borderColor: '#fff',
+      },    
 });
 
 export default sharedStyles;
