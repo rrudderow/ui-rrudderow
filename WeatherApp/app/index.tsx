@@ -23,10 +23,10 @@ export default function HomeScreen() {
   const cards = [
     { label: 'Temperature', value: '76°F', route: '/temp' },
     { label: 'UV Index', value: '5', route: '/uv' },
-    { label: 'Humidity', value: '60%', route: '/humidity' },
+    { label: 'Humidity', value: '55%', route: '/humidity' },
     { label: 'Air Quality', value: 'Moderate', route: '/air-quality' },
-    { label: 'Rain Chance', value: '30%', route: '/rain' },
-    { label: 'Wind', value: '15 km/h NW', route: '/wind' },
+    { label: 'Rain Chance', value: '10%', route: '/rain' },
+    { label: 'Wind', value: '8 km/h NW', route: '/wind' },
     { label: 'Sunset', value: '7:42 PM', route: '/sunset' },
     { label: 'Moon Phase', value: 'Waning Gibbous', route: '/moon' },
   ];
